@@ -141,6 +141,25 @@ require("lazy").setup({
     opts = {},
   },
 
+  -- LSP progress notifications
+  {
+    "j-hui/fidget.nvim",
+    opts = {},
+  },
+
+  -- Highlight TODO/FIXME/NOTE/HACK in comments
+  {
+    "folke/todo-comments.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    opts = {},
+  },
+
+  -- Smooth animations for cursor, scroll, and window resize
+  {
+    "echasnovski/mini.animate",
+    opts = {},
+  },
+
   -- Bridge between mason and lspconfig
   {
     "williamboman/mason-lspconfig.nvim",
