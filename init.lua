@@ -82,9 +82,8 @@ map("n", "<leader>g", ":LazyGit<CR>", { desc = "LazyGit" })
 map("n", "<F1>", ":Cheatsheet<CR>", { desc = "Cheatsheet" })
 
 -- ── Floating terminal (`) ─────────────────────────────
-local terminal = require("terminal")
-map("n", "`", terminal.toggle, { desc = "Toggle floating terminal" })
-map("t", "`", terminal.toggle, { desc = "Toggle floating terminal" })
+map("n", "`", "<cmd>FloatermToggle<CR>", { desc = "Toggle floating terminal" })
+map("t", "`", "<cmd>FloatermToggle<CR>", { desc = "Toggle floating terminal" })
 
 
 -- PLUGINS (lazy.nvim)
@@ -295,8 +294,15 @@ require("lazy").setup({
     },
   },
 
-
-
+  {
+    "nvzone/floaterm",
+    dependencies = { "nvzone/volt" },
+    cmd = "FloatermToggle",
+    opts = {
+      border = true,
+      size = { h = 90, w = 90 },
+    },
+  },
 
 })
 
