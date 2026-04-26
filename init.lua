@@ -139,6 +139,8 @@ require("lazy").setup({
         },
       })
       telescope.load_extension("fzf")
+      -- each future extension needs telescope.load_extension() here manually
+      -- (config fn disables lazy's auto opts-merge for this plugin)
     end,
   },
 
