@@ -50,7 +50,7 @@ map("n", "<leader>f", vim.lsp.buf.format,         { desc = "Format file (Cmd+Alt
 
 -- ── Go to definition / usages (Cmd+B, Alt+F7) ─────────
 map("n", "<M-b>",  vim.lsp.buf.definition,        { desc = "Go to definition (Alt+B)" })
-map("n", "<M-u>", vim.lsp.buf.references,        { desc = "Find usages (Alt+F7)" })
+map("n", "<M-u>", "<cmd>Telescope lsp_references<CR>", { desc = "Find usages (Alt+F7)" })
 map("n", "K",      vim.lsp.buf.hover,             { desc = "Hover docs" })
 
 -- ── Errors (F2) ───────────────────────────────────────
