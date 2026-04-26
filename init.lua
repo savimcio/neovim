@@ -160,6 +160,18 @@ require("lazy").setup({
     opts = {},
   },
 
+  -- Diagnostics panel (GoLand-like Problems window)
+  {
+    "folke/trouble.nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    opts = {},
+    keys = {
+      { "<leader>xx", "<cmd>Trouble diagnostics toggle<cr>",          desc = "Diagnostics panel" },
+      { "<leader>xd", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", desc = "Document diagnostics" },
+      { "<leader>xw", "<cmd>Trouble diagnostics toggle<cr>",          desc = "Workspace diagnostics" },
+    },
+  },
+
   -- Bridge between mason and lspconfig
   {
     "williamboman/mason-lspconfig.nvim",
