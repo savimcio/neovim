@@ -74,7 +74,7 @@ map("v", "K",     ":m '<-2<CR>gv=gv",             { desc = "Move selection up" }
 
 -- ── Misc ──────────────────────────────────────────────
 map("n", "<Esc>", ":nohlsearch<CR>",              { desc = "Clear search highlight" })
-map("n", "<leader>t", ":Neotree toggle<CR>", { desc = "Toggle file tree" })
+map("n", "<leader>t", ":Neotree toggle position=left<CR>", { desc = "Toggle file tree" })
 map("n", "<leader>g", ":LazyGit<CR>", { desc = "LazyGit" })
 
 map("n", "<F1>", ":Cheatsheet<CR>", { desc = "Cheatsheet" })
@@ -331,6 +331,9 @@ require("lazy").setup({
       options = {
         theme = "auto",
         globalstatus = true,
+      },
+      sections = {
+        lualine_c = { { "filename", path = 1, color = { fg = "#cdd6f4", gui = "bold" } } },
       },
     },
   },
