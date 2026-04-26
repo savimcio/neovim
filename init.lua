@@ -163,6 +163,7 @@ require("lazy").setup({
     "mrjones2014/smart-splits.nvim",
     config = function()
       local ss = require("smart-splits")
+      ss.setup({ default_amount = 10 })
       -- navigate splits
       vim.keymap.set("n", "<C-h>", ss.move_cursor_left,  { desc = "Move to left split" })
       vim.keymap.set("n", "<C-j>", ss.move_cursor_down,  { desc = "Move to lower split" })
@@ -181,7 +182,9 @@ require("lazy").setup({
     "folke/trouble.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
     cmd = "Trouble",
-    opts = {},
+    opts = {
+      win = { size = 40 },
+    },
     keys = {
       { "<leader>xx", "<cmd>Trouble diagnostics toggle<cr>",                          desc = "Workspace diagnostics" },
       { "<leader>xX", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",             desc = "Buffer diagnostics" },
