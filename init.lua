@@ -62,11 +62,9 @@ map("n", "<M-[>", ":bprevious<CR>",               { desc = "Prev buffer" })
 map("n", "<M-]>", ":bnext<CR>",                   { desc = "Next buffer" })
 map("n", "<M-w>", ":bdelete<CR>",                 { desc = "Close buffer" })
 
--- ── Splits ────────────────────────────────────────────
-map("n", "<C-h>", "<C-w>h",                       { desc = "Move left" })
-map("n", "<C-l>", "<C-w>l",                       { desc = "Move right" })
-map("n", "<C-j>", "<C-w>j",                       { desc = "Move down" })
-map("n", "<C-k>", "<C-w>k",                       { desc = "Move up" })
+-- ── Splits (smart-splits) ─────────────────────────────
+-- navigation wired in plugin config below
+-- resize: Alt+hjkl
 
 -- ── Navigation ────────────────────────────────────────
 map("n", "<C-d>", "<C-d>zz",                      { desc = "Scroll down centered" })
@@ -158,6 +156,24 @@ require("lazy").setup({
   {
     "echasnovski/mini.animate",
     opts = {},
+  },
+
+  -- Smart split navigation and resizing (Alt+hjkl to resize)
+  {
+    "mrjones2014/smart-splits.nvim",
+    config = function()
+      local ss = require("smart-splits")
+      -- navigate splits
+      vim.keymap.set("n", "<C-h>", ss.move_cursor_left,  { desc = "Move to left split" })
+      vim.keymap.set("n", "<C-j>", ss.move_cursor_down,  { desc = "Move to lower split" })
+      vim.keymap.set("n", "<C-k>", ss.move_cursor_up,    { desc = "Move to upper split" })
+      vim.keymap.set("n", "<C-l>", ss.move_cursor_right, { desc = "Move to right split" })
+      -- resize splits
+      vim.keymap.set("n", "<M-h>", ss.resize_left,       { desc = "Resize split left" })
+      vim.keymap.set("n", "<M-j>", ss.resize_down,       { desc = "Resize split down" })
+      vim.keymap.set("n", "<M-k>", ss.resize_up,         { desc = "Resize split up" })
+      vim.keymap.set("n", "<M-l>", ss.resize_right,      { desc = "Resize split right" })
+    end,
   },
 
   -- Diagnostics panel (GoLand-like Problems window)
@@ -265,7 +281,7 @@ require("lazy").setup({
         hijack_netrw_behavior = "open_current",
       },
       window = {
-        width = 30,
+        width = 40,
       },
     },
   },
