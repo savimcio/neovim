@@ -54,8 +54,8 @@ map("n", "<M-u>", vim.lsp.buf.references,        { desc = "Find usages (Alt+F7)"
 map("n", "K",      vim.lsp.buf.hover,             { desc = "Hover docs" })
 
 -- ── Errors (F2) ───────────────────────────────────────
-map("n", "<F2>",   vim.diagnostic.goto_next,      { desc = "Next error" })
-map("n", "<S-F2>", vim.diagnostic.goto_prev,      { desc = "Prev error" })
+map("n", "<F2>",   function() vim.diagnostic.goto_next() vim.diagnostic.open_float() end, { desc = "Next diagnostic" })
+map("n", "<S-F2>", function() vim.diagnostic.goto_prev() vim.diagnostic.open_float() end, { desc = "Prev diagnostic" })
 
 -- ── Buffer switching (Cmd+Shift+[ / ]) ────────────────
 map("n", "<M-[>", ":bprevious<CR>",               { desc = "Prev buffer" })
